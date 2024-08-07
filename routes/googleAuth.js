@@ -8,7 +8,7 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.get("/", (req, res) => {
-  console.log("Hello World");
+  res.send("Hello World");
 });
 
 router.get(

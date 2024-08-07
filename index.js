@@ -21,10 +21,10 @@ app.use(express.json());
 app.use("/notes", notesRoutes);
 app.use("/", googleRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+// app.get("/", (req, res) => {
+//   res.json("World!!");
+// });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port: ${process.env.BACKEND_PORT}`);
+  console.log(`Example app listening on port: ${port}`);
 });
