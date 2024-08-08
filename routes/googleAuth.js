@@ -30,9 +30,11 @@ router.get(
       process.env.SECRET_KEY
     );
     res.redirect(
-      `http://work-manager-frontend.vercel.app/notes?token=${token}`
+      `https://work-manager-frontend.vercel.app/notes?token=${token}`
     );
   }
 );
 
 module.exports = router;
+
+// https://work-manager-frontend.vercel.app/
