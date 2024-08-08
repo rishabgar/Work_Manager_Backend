@@ -29,7 +29,7 @@ router.get(
       },
       process.env.SECRET_KEY
     );
-    res.redirect(`https://work-manager-frontend.vercel.app/`);
+    res.redirect(`https://work-manager-frontend.vercel.app/?token=${token}`);
   }
 );
 
