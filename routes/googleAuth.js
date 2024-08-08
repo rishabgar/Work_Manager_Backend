@@ -21,7 +21,8 @@ router.get(
   passport.authenticate("google", {
     failureRedirect: "https://work-manager-frontend.vercel.app/",
   }),
-  (req, res) => {
+  async (req, res) => {
+    await connectdb();
     const token = jwt.sign(
       {
         userId: req.user.id,
@@ -29,6 +30,21 @@ router.get(
       },
       process.env.SECRET_KEY
     );
+    const userEmail = req.user.emails[0].value;
+    const userExists = await User.exists({
+      email: userEmail,
+    });
+
+    const userName = req.user.displayName;
+
+    if (userExists == null) {
+      const newUserCreated = new User({
+        name: userName,
+        email: userEmail,
+        auth_key: token,
+      });
+      await newUserCreated.save();
+    }
     res.redirect(`https://work-manager-frontend.vercel.app/?token=${token}`);
   }
 );
