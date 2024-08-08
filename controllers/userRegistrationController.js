@@ -16,11 +16,10 @@ exports.userRegistration = async function (req, res) {
     if (userExists !== null) {
       return res
         .status(200)
-        .json({ success: true, message: "User alrady exists!!" });
+        .json({ success: false, message: "User alrady exists!!" });
     } else {
       const newUserCreated = new User({
-        firstName: firstName,
-        lastName: lastName,
+        firstName: `${firstName} ${lastName}`,
         email: userEmail,
         password: userPassword,
       });
