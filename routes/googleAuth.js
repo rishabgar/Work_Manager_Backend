@@ -3,6 +3,8 @@ const router = express.Router();
 require("../utils/passport");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const { connectdb } = require("../db/index");
+const User = require("../models/registrationModel");
 
 router.use(passport.initialize());
 router.use(passport.session());
