@@ -19,7 +19,7 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:5173/",
+    failureRedirect: "https://work-manager-frontend.vercel.app/",
   }),
   (req, res) => {
     const token = jwt.sign(
@@ -29,7 +29,9 @@ router.get(
       },
       process.env.SECRET_KEY
     );
-    res.redirect(`http://localhost:5173/notes?token=${token}`);
+    res.redirect(
+      `https://work-manager-frontend.vercel.app/notes?token=${token}`
+    );
   }
 );
 
