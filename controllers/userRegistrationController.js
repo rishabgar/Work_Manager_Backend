@@ -19,7 +19,7 @@ exports.userRegistration = async function (req, res) {
         .json({ success: false, message: "User alrady exists!!" });
     } else {
       const newUserCreated = new User({
-        firstName: `${firstName} ${lastName}`,
+        name: `${firstName} ${lastName}`,
         email: userEmail,
         password: userPassword,
       });
