@@ -40,9 +40,18 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const port = process.env.BACKEND_PORT || 3000;
 const server = createServer(app);
+
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: [
+      "https://work-manager-frontend.vercel.app",
+      "https://work-manager-backend.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ], // Replace with your trusted domains
+    methods: ["GET", "POST"], // Specify allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
+    credentials: true, // Enable if you want to allow credentials (cookies, etc.)
   },
 });
 app.use(cors());
